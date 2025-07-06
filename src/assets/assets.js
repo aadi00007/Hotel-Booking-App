@@ -262,3 +262,4 @@ const BookIcon = ()=>(
 )
 
 */
+export default assets
