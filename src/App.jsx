@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./components/navbar";
-import { Route, useLocation } from "react-router-dom";
+import { Route,Routes, useLocation } from "react-router-dom";
 import Home from "./Pages/Home";
 const App =()=>{
   const isOwnerPath = useLocation().pathname.includes("owner");
