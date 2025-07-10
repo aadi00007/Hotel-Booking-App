@@ -1,11 +1,13 @@
 import React from "react";
-import Hero from "../components/Hero";
+import FeaturedDestination from "../components/FeaturedDestination";
+import Hero from "../components/hero";
 
 
 const Home =()=>{
     return(
         <>
-            <Hero />
+            <Hero/>
+            <FeaturedDestination/>
 
         </>
 
