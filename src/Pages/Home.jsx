@@ -4,6 +4,7 @@ import Hero from "../components/hero";
 import ExclusiveOffers from "../components/ExclusiveOffers";
 import Testimonial from "../components/Testimonial";
 import NewsLetters from "../components/NewsLetters";
+import Footer from "../components/Footer";
 
 
 const Home =()=>{
@@ -14,6 +15,7 @@ const Home =()=>{
             <ExclusiveOffers/>
             <Testimonial />
             <NewsLetters/>
+            
 
         </>
 
