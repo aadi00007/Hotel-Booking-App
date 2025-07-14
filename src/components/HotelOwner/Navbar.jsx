@@ -10,6 +10,7 @@ const Navbar=()=>{
                 duration-300'>
     <Link to='/'>
     <img src={assets.logo} alt="" className="h-9 invert opacity-80" />
+    
     </Link>
     <UserButton/>
 </div>
