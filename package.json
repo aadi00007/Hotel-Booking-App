@@ -1,0 +1,15 @@
+{
+  "name": "hotel-booking-app",
+  "version": "1.0.0",
+  "description": "Full stack hotel booking application",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run server",
+    "client": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "install-deps": "cd server && npm install && cd ../client && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
