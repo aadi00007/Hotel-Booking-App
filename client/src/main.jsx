@@ -1,21 +1,38 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import { BrowserRouter } from 'react-router-dom'
-import { ClerkProvider } from '@clerk/clerk-react'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.jsx';
+import { BrowserRouter } from 'react-router-dom';
+import { ClerkProvider } from '@clerk/clerk-react';
+import { AppProvider } from './context/AppContext.jsx';
 
 // Import your Publishable Key
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 if (!PUBLISHABLE_KEY) {
-  throw new Error('Add your Clerk Publishable Key to the .env file')
+  console.error('Clerk Publishable Key is missing. Please add VITE_CLERK_PUBLISHABLE_KEY to your .env file.');
+  throw new Error('Clerk Publishable Key is required.');
 }
-createRoot(document.getElementById('root')).render(
-  <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-  </ClerkProvider>,
 
-)
+const rootElement = document.getElementById('root');
+
+if (!rootElement) {
+  console.error('Root element with ID "root" not found in the document.');
+  throw new Error('Root element is missing.');
+}
+
+createRoot(rootElement).render(
+  
+    <ClerkProvider
+      publishableKey={PUBLISHABLE_KEY}
+      afterSignOutUrl="/"
+      telemetry={false} // Disable telemetry in production if desired
+    >
+      <BrowserRouter>
+        <AppProvider>
+          <App />
+        </AppProvider>
+      </BrowserRouter>
+    </ClerkProvider>
+  
+);
