@@ -1,33 +1,47 @@
-import React from "react";
-import HotelCard from "./Hotelcard";
+import { useState, useEffect } from "react";
+import HotelCard from "./HotelCard"; // Fixed case and removed .jsx (assuming case consistency)
 import Title from "./Title";
-import {useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
-import { useState } from "react";
-import { useEffect } from "react";
 
+const RecommendedHotels = () => {
+  const { rooms, searchedCities } = useAppContext();
+  const [recommended, setRecommended] = useState([]);
 
-const RecommendedHotels =()=>{
-    const {rooms, searchedCities } = useAppContext()
-    const [recommended, setrecommended] = useState([]);
-    const filterHotels = ()=>{
-        const filteredHotels = rooms.slice().filter(room => searchedCities.includes(room.hotel.city))
-        setrecommended(filterHotels) 
+  const filterHotels = () => {
+    // Ensure rooms and searchedCities are defined to avoid errors
+    if (!rooms || !searchedCities) {
+      setRecommended([]);
+      return;
     }
-    useEffect(()=>{
-        filterHotels()
+    const filteredHotels = rooms.filter((room) =>
+      searchedCities.includes(room?.hotel?.city)
+    );
+    setRecommended(filteredHotels);
+  };
 
-    },[rooms, searchedCities])
-    return recommended.length> 0 &&(
-        <div className="flex flex-col items-center px-6 md:px-16 lg:px-24 bg-slate-50">
-            <Title title='Recommended Hotels' subtitle='Discover the best hotels, world class interiors and rooms with fascinating views.' />
-            <div className="flex flex-wrap items-center justify-center gap-6 mt-20">
-                {recommended.slice(0,4).map((room,index)=>(
-                    <HotelCard key={room._id} room={room} index={index}/>
-                ))}
-            </div>
-           
+  useEffect(() => {
+    filterHotels();
+  }, [rooms, searchedCities]);
+
+  return (
+    <div className="flex flex-col items-center px-6 md:px-16 lg:px-24 bg-slate-50">
+      <Title
+        title="Recommended Hotels"
+        subtitle="Discover the best hotels, world-class interiors, and rooms with fascinating views."
+      />
+      {recommended.length > 0 ? (
+        <div className="flex flex-wrap items-center justify-center gap-6 mt-20">
+          {recommended.slice(0, 4).map((room, index) => (
+            <HotelCard key={room._id} room={room} index={index} />
+          ))}
         </div>
-    )
-}
-export default RecommendedHotels
+      ) : (
+        <p className="mt-20 text-gray-500">
+          No recommended hotels found for the selected cities.
+        </p>
+      )}
+    </div>
+  );
+};
+
+export default RecommendedHotels;

@@ -22,11 +22,13 @@ if (!rootElement) {
 }
 
 createRoot(rootElement).render(
-  
+  <StrictMode>
     <ClerkProvider
       publishableKey={PUBLISHABLE_KEY}
-      afterSignOutUrl="/"
-      telemetry={false} // Disable telemetry in production if desired
+      afterSignOutUrl="/" // Original
+      signInUrl="/sign-in" // Ensures client-side sign-in
+      afterSignInUrl="/" // Prevents full reload after login
+      telemetry={false} // Original
     >
       <BrowserRouter>
         <AppProvider>
@@ -34,5 +36,5 @@ createRoot(rootElement).render(
         </AppProvider>
       </BrowserRouter>
     </ClerkProvider>
-  
+  </StrictMode>
 );

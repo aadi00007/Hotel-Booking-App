@@ -12,7 +12,7 @@ const ListRoom = () => {
     const fetchRooms = async()=>{
         try {
             const {data} = await axios.get('/api/rooms/owner', {headers :
-                {Authorization : `Bearer ${await getToken}`}
+                {Authorization : `Bearer ${await getToken()}`}
              })
              if(data.success){
                 setRooms(data.rooms)
@@ -29,7 +29,7 @@ const ListRoom = () => {
      
     const toggleAvailability = async(roomId)=>{
         const {data} = await axios.post('/api/rooms/toggle-availability', {roomId}, {headers :
-                {Authorization : `Bearer ${await getToken}`}
+                {Authorization : `Bearer ${await getToken()}`}
              })
              if(data.success){
                 toast.success(data.message)
