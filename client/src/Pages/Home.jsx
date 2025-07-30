@@ -1,11 +1,11 @@
 import React from "react";
-import FeaturedDestination from "../components/FeaturedDestination";
-import Hero from "../components/hero";
-import ExclusiveOffers from "../components/ExclusiveOffers";
-import Testimonial from "../components/Testimonial";
-import NewsLetters from "../components/NewsLetters";
-import Footer from "../components/Footer";
-import RecommendedHotels from "../components/RecommendedHotels";
+import FeaturedDestination from "../components/FeaturedDestination.jsx";
+import Hero from "../components/Hero.jsx";
+import ExclusiveOffers from "../components/ExclusiveOffers.jsx";
+import Testimonial from "../components/Testimonial.jsx";
+import NewsLetters from "../components/NewsLetters.jsx";
+import Footer from "../components/Footer.jsx";
+import RecommendedHotels from "../components/RecommendedHotels.jsx";
 
 
 const Home =()=>{
