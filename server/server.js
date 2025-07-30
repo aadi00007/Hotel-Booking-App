@@ -26,6 +26,7 @@ const clerk = createClerkClient({
 // CORS configuration
 app.use(cors({
   origin: [
+    'https://hotel-booking-app-qhev.vercel.app/',
     'http://localhost:3000',
     'http://localhost:5173',
     process.env.FRONTEND_URL
