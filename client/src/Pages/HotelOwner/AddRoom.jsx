@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Title from "../../components/Title";
+import Title from "../../components/Title.jsx";
 import assets from "../../assets/assets";
-import { useAppContext } from "../../context/AppContext";
+import { useAppContext } from "../../context/AppContext.jsx";
 import toast from "react-hot-toast";
 
 const AddRoom = () => {

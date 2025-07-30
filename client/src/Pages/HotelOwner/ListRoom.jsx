@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { roomsDummyData } from "../../assets/assets";
-import Title from "../../components/Title";
-import { useAppContext } from "../../context/AppContext";
+import Title from "../../components/Title.jsx";
+import { useAppContext } from "../../context/AppContext.jsx";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
 

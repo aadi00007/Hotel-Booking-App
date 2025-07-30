@@ -1,8 +1,8 @@
 import React from "react";
-import Title from "../../components/Title";
+import Title from "../../components/Title.jsx";
 import assets from "../../assets/assets";
 import { useState } from "react";
-import { useAppContext } from "../../context/AppContext";
+import { useAppContext } from "../../context/AppContext.jsx";
 import { useEffect } from "react";
 
 const Dashboard = () => {

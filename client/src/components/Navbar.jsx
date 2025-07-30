@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import assets from "../assets/assets";
 import { useClerk, UserButton } from "@clerk/clerk-react";
-import { useAppContext } from "../context/AppContext";
+import { useAppContext } from "../context/AppContext.jsx";
 
 const BookIcon = () => (
   <svg

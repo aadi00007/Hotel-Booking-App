@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import assets, { facilityIcons, roomsDummyData } from "../assets/assets";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import StarRating from "../components/StarRatings";
-import { useAppContext } from "../context/AppContext";
+import StarRating from "../components/StarRatings.jsx";
+import { useAppContext } from "../context/AppContext.jsx";
 import { useMemo } from "react";
 
 const CheckBox = ({ label, selected = false, onChange = () => {} }) => {

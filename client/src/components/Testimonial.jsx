@@ -1,6 +1,6 @@
 import React from "react";
 import Title from "./Title";
-import StarRating from "./StarRatings";
+import StarRating from "./StarRatings.jsx";
 
 const Testimonial=()=>{
     return(

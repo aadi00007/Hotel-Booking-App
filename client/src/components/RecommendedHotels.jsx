@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import HotelCard from "./HotelCard"; // Fixed case and removed .jsx (assuming case consistency)
+import HotelCard from "./Hotelcard.jsx"; // Fixed case and removed .jsx (assuming case consistency)
 import Title from "./Title";
 import { useAppContext } from "../context/AppContext";
 

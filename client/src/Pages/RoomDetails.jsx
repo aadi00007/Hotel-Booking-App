@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import assets, { dashboardDummyData, facilityIcons, roomCommonData } from "../assets/assets";
-import StarRating from "../components/StarRatings";
-import { useAppContext } from "../context/AppContext";
+import StarRating from "../components/StarRatings.jsx";
+import { useAppContext } from "../context/AppContext.jsx";
 import toast from "react-hot-toast";
 
 const RoomDetails = () => {

@@ -1,7 +1,7 @@
 import React from "react";
-import HotelCard from "./HotelCard"; // Fixed typo in filename (Hotelcard → HotelCard)
-import Title from "./Title";
-import { useAppContext } from "../context/AppContext";
+import HotelCard from "./Hotelcard.jsx"; // Fixed typo in filename (Hotelcard → HotelCard)
+import Title from "./Title.jsx";
+import { useAppContext } from "../context/AppContext.jsx";
 
 const FeaturedDestination = () => {
   const { rooms, navigate } = useAppContext();
