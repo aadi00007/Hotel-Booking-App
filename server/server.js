@@ -61,7 +61,13 @@ app.use((req, res, next) => {
 app.use(clerkMiddleware({
   publishableKey: process.env.CLERK_PUBLISHABLE_KEY,
   secretKey: process.env.CLERK_SECRET_KEY,
+  debug: process.env.NODE_ENV === 'development'
 }));
+app.use((req, res, next) => {
+  console.log('🔑 Auth header:', req.headers.authorization ? 'Present' : 'Missing');
+  console.log('🔑 Clerk user:', req.auth?.userId ? 'Present' : 'Missing');
+  next();
+});
 
 app.use((req, res, next) => {
   // Check if this is a Clerk handshake request
