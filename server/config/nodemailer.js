@@ -1,17 +1,16 @@
 // config/nodemailer.js
-import nodemailer from 'nodemailer';
+import nodemailer from 'nodemailer'
 
-const transporter = nodemailer.createTransport({  // ✅ Fixed: removed extra "er"
+const transporter = nodemailer.createTransport({
   host: "smtp-relay.brevo.com",
   port: 587,
   secure: false,
   auth: {
-    user: process.env.SMTP_USER || 'dummy',
-    pass: process.env.SMTP_PASS || 'dummy',
+    user: process.env.SENDER_EMAIL, // Use your sender email
+    pass: process.env.BREVO_API_KEY, // Use your Brevo API key as password
   }
 });
 
-// Since you're using API approach, disable SMTP testing
-console.log('📧 SMTP transporter created (using API for emails)');
+console.log('📧 SMTP transporter created with Brevo');
 
 export default transporter;

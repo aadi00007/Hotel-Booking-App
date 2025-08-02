@@ -23,10 +23,9 @@ const clerk = createClerkClient({
   secretKey: process.env.CLERK_SECRET_KEY,
 });
 
-// CORS configuration
-const corsOptions = {
-    origin: [
-        'https://hotel-booking-app-qhev.vercel.app', // Your frontend URL
+// Replace your CORS block with this minimal version:
+app.use(cors({
+    origin: ['https://hotel-booking-app-qhev.vercel.app',
         'http://localhost:3000',
         'http://localhost:5173'
     ],
@@ -34,18 +33,14 @@ const corsOptions = {
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
     allowedHeaders: [
         'Origin',
-        'X-Requested-With', 
-        'Content-Type', 
+        'X-Requested-With',
+        'Content-Type',
         'Accept',
         'Authorization'
     ],
-    optionsSuccessStatus: 200 // For legacy browser support
-};
+    optionsSuccessStatus: 200
+}));
 
-app.use(cors(corsOptions));
-
-// Handle preflight requests explicitly
-app.options('*', cors(corsOptions));
 
 app.use(express.json());
 
@@ -81,7 +76,7 @@ app.use((req, res, next) => {
 
 // Handle Clerk handshake requests specifically
 app.get('/', (req, res) => {
-  // Check if this is a Clerk handshake request
+//   Check if this is a Clerk handshake request
   if (req.query.__clerk_handshake) {
     // Return success - Clerk middleware already processed it
     return res.status(200).json({ success: true, message: 'Handshake processed' });
@@ -92,15 +87,15 @@ app.get('/', (req, res) => {
 });
 
 // Routes
-app.use("/api/clerk", clerkWebHooks);
+app.post("/api/clerk", clerkWebHooks);
 
-// API routes with authentication
+// // API routes with authentication
 app.use('/api/user', userRouter);
 app.use('/api/hotels', hotelRouter);
 app.use('/api/rooms', roomRouter);
 app.use('/api/bookings', bookingRouter);
 
-// Error handling middleware
+// // Error handling middleware
 app.use((error, req, res, next) => {
   console.error('Global error handler:', error);
   res.status(500).json({
@@ -110,12 +105,19 @@ app.use((error, req, res, next) => {
   });
 });
 
-// 404 handler for API routes
-app.use('/api/*', (req, res) => {
-  res.status(404).json({
-    success: false,
-    message: 'API endpoint not found'
-  });
+// // 404 handler for API routes
+app.use((req, res) => {
+  if (req.path.startsWith('/api/')) {
+    res.status(404).json({
+      success: false,
+      message: 'API endpoint not found'
+    });
+  } else {
+    res.status(404).json({
+      success: false,
+      message: 'Page not found'
+    });
+  }
 });
 
 const PORT = process.env.PORT || 3000;
@@ -130,4 +132,5 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // Export for Vercel serverless deployment
+app.listen(PORT, () => console.log(`Server running on port 3000`));
 export default app;
