@@ -6,7 +6,7 @@ import { useUser, useAuth } from "@clerk/clerk-react";
 import toast from "react-hot-toast";
 
 // Set axios base URL with a sensible default
-axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 const AppContext = createContext();
 
