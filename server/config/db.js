@@ -7,7 +7,6 @@ const connectDB = async () => {
             useUnifiedTopology: true,
             serverSelectionTimeoutMS: 30000, // 30 seconds
             socketTimeoutMS: 45000, // 45 seconds
-            // bufferMaxEntries: 0, // ❌ Remove this line completely
             maxPoolSize: 10 // Maintain up to 10 socket connections
         });
         console.log('✅ MongoDB connected successfully');
